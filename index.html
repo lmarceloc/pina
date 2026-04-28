@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pina Beauty Concept - Atelier de Beleza em Ponta Grossa" />
+  <meta name="theme-color" content="#1a0f0a" />
+  <title>Pina Beauty Concept | Atelier de Beleza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Italiana&family=Cinzel:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #1a0f0a;
+      color: #F4EDE4;
+      -webkit-font-smoothing: antialiased;
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Reveal animation */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1300ms cubic-bezier(.2,.8,.2,1), transform 1300ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    [data-reveal][data-revealed="true"] {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #14090a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212,165,116,0.4);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(212,165,116,0.7);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 32px 56px;
+      transition: all 500ms cubic-bezier(.2,.8,.2,1);
+      background: transparent;
+      backdrop-filter: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #F4EDE4;
+    }
+
+    nav.scrolled {
+      padding: 14px 56px;
+      background: rgba(244,237,228,0.92);
+      backdrop-filter: blur(20px);
+      color: #1a0f0a;
+    }
+
+    .pina-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      color: currentColor;
+    }
+
+    .pina-logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      font-size: 44px;
+      padding-left: 0.18em;
+    }
+
+    nav.scrolled .pina-logo-main {
+      font-size: 22px;
+    }
+
+    .pina-logo-sub {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      font-size: 8px;
+      margin-top: 6px;
+      padding-left: 0.4em;
+      opacity: 0.85;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 300ms;
+    }
+
+    nav a:hover {
+      border-bottom-color: #B8895A;
+    }
+
+    .nav-reserve {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+      transition: opacity 300ms;
+    }
+
+    .nav-reserve:hover {
+      opacity: 0.8;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 70% 40%, #2a1a10 0%, #14090a 70%);
+      color: #F4EDE4;
+    }
+
+    .hero::before {
+      content: 'Diva';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(280px, 38vw, 560px);
+      color: rgba(184,137,90,0.06);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 56px 60px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: #B8895A;
+      margin-bottom: 56px;
+      font-weight: 300;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(64px, 9vw, 144px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin: 0 0 40px;
+      max-width: 1100px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #D4A574;
+      font-weight: 300;
+    }
+
+    .hero-desc {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 540px;
+      opacity: 0.75;
+      margin: 0 0 56px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 96px;
+    }
+
+    .btn {
+      padding: 20px 44px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 400ms;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #F4EDE4;
+      color: #1a0f0a;
+    }
+
+    .btn-primary:hover {
+      background: #D4A574;
+    }
+
+    .btn-secondary {
+      color: #F4EDE4;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(244,237,228,0.4);
+      padding: 4px 0;
+      padding-bottom: 4px;
+    }
+
+    .btn-secondary:hover {
+      border-bottom-color: rgba(244,237,228,0.8);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 80px;
+      justify-content: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(184,137,90,0.25);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 36px;
+      color: #D4A574;
+    }
+
+    .stat-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+
+    /* Sections */
+    section {
+      padding: 180px 56px;
+    }
+
+    section.light {
+      background: #F4EDE4;
+      color: #1a0f0a;
+    }
+
+    section.dark {
+      background: #1a0f0a;
+      color: #F4EDE4;
+    }
+
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .section-dark .section-tag {
+      color: #D4A574;
+    }
+
+    .section-light .section-tag {
+      color: #B8895A;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(40px, 7vw, 112px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0 0 40px;
+    }
+
+    h2 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .section-light h2 em {
+      color: #B8895A;
+    }
+
+    .section-dark h2 em {
+      color: #D4A574;
+    }
+
+    /* Philosophy Section */
+    .philosophy {
+      text-align: center;
+    }
+
+    .philosophy-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto 56px;
+      color: #3a2a20;
+    }
+
+    .philosophy-quote {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .quote-line {
+      width: 32px;
+      height: 1px;
+      background: #B8895A;
+    }
+
+    .quote-author {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: #B8895A;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1px;
+      background: rgba(212,165,116,0.15);
+    }
+
+    .service-card {
+      background: #1a0f0a;
+      padding: 64px 40px;
+      transition: all 500ms;
+      cursor: pointer;
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      background: #241510;
+    }
+
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 14px;
+      color: #D4A574;
+      letter-spacing: 0.05em;
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .service-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 32px;
+      color: #D4A574;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .service-desc {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    .service-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #D4A574;
+    }
+
+    .service-special {
+      background: linear-gradient(135deg, #D4A574 0%, #B8895A 100%);
+      color: #1a0f0a;
+    }
+
+    .service-special-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .service-special-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 32px;
+    }
+
+    .service-special a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #1a0f0a;
+      text-decoration: none;
+      border-bottom: 1px solid #1a0f0a;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    /* Team Section */
+    .team-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+
+    .team-header-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #3a2a20;
+      margin: 0;
+      max-width: 480px;
+      justify-self: end;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .team-member {
+      position: relative;
+    }
+
+    .team-photo {
+      aspect-ratio: 3/4;
+      background: repeating-linear-gradient(45deg, #e8dcc8 0 2px, #f0e6d4 2px 14px);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+    }
+
+    .team-photo-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: rgba(26,15,10,0.35);
+      letter-spacing: 0.2em;
+    }
+
+    .team-photo-number {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #B8895A;
+    }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .team-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #B8895A;
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #2a1a10 0%, #14090a 100%);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 500ms;
+      min-height: 350px;
+      width: 100%;
+    }
+
+    .gallery-item[data-tall] {
+      aspect-ratio: 3/4;
+      min-height: 480px;
+    }
+
+    .gallery-item[data-wide] {
+      aspect-ratio: 2/1;
+      grid-column: span 2;
+    }
+
+    .gallery-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: rgba(244,237,228,0.25);
+      letter-spacing: 0.2em;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,165,116,0.92) 0%, rgba(184,137,90,0.92) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 500ms;
+      color: #1a0f0a;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 22px;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-button {
+      text-align: center;
+      margin-top: 64px;
+    }
+
+    .btn-instagram {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #D4A574;
+      text-decoration: none;
+      border: 1px solid #D4A574;
+      padding: 18px 40px;
+      border-radius: 999px;
+      display: inline-block;
+      transition: all 400ms;
+    }
+
+    .btn-instagram:hover {
+      background: #D4A574;
+      color: #1a0f0a;
+    }
+
+    /* Visit Section */
+    .visit-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .visit-info {
+      display: grid;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .info-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .info-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #B8895A;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    .info-content {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    .info-content em {
+      font-style: italic;
+      color: #B8895A;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .info-phone {
+      font-size: 22px;
+    }
+
+    .info-hours {
+      font-size: 20px;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: #1a0f0a;
+      color: #F4EDE4;
+      padding: 22px 44px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 400ms;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-contact:hover {
+      background: #B8895A;
+    }
+
+    .visit-image {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visit-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent 0 24px, rgba(184,137,90,0.08) 24px 25px);
+    }
+
+    .visit-image-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(26,15,10,0.35);
+      letter-spacing: 0.2em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visit-quote {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 1.3;
+      color: #1a0f0a;
+      z-index: 2;
+    }
+
+    .corner-deco {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid #B8895A;
+      pointer-events: none;
+    }
+
+    .corner-deco-tl {
+      top: -16px;
+      right: -16px;
+    }
+
+    .corner-deco-bl {
+      bottom: -16px;
+      left: -16px;
+    }
+
+    /* Footer */
+    footer {
+      background: #14090a;
+      color: #F4EDE4;
+      padding: 100px 56px 40px;
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      text-align: center;
+      padding-bottom: 80px;
+      border-bottom: 1px solid rgba(184,137,90,0.2);
+    }
+
+    .footer-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.2;
+      color: #D4A574;
+      margin-bottom: 32px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-bottom {
+      padding-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      font-weight: 300;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #D4A574;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Floating WhatsApp */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 40;
+      padding: 16px 24px;
+      border-radius: 999px;
+      background: #1a0f0a;
+      color: #F4EDE4;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 16px 40px rgba(26,15,10,0.4);
+      border: 1px solid #B8895A;
+      transition: all 400ms;
+    }
+
+    .floating-whatsapp:hover {
+      background: #B8895A;
+      color: #1a0f0a;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      nav {
+        padding: 16px 24px;
+      }
+
+      section {
+        padding: 96px 24px;
+      }
+
+      .hero-content {
+        padding: 80px 24px 40px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats {
+        gap: 32px;
+      }
+
+      .team-header {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 48px;
+      }
+
+      .team-header-text {
+        justify-self: auto;
+        max-width: 100%;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      @media (max-width: 600px) {
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item[data-wide] {
+        grid-column: span 2;
+      }
+
+      .visit-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pina-logo-sub {
+        display: none;
+      }
+
+      .footer-bottom {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .btn-instagram {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="pina-logo">
+      <div class="pina-logo-main">PINA</div>
+      <div class="pina-logo-sub">BEAUTY CONCEPT</div>
+    </div>
+    <ul>
+      <li><a href="#filosofia">Filosofia</a></li>
+      <li><a href="#atelier">Atelier</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#visita">Visite-nos</a></li>
+    </ul>
+    <a href="https://wa.me/5542998144294" class="nav-reserve" target="_blank" rel="noreferrer">Reservar — WhatsApp</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div data-reveal class="hero-tag">✦ &nbsp; Beauty Atelier · Ponta Grossa &nbsp; ✦</div>
+      <h1 data-reveal>
+        Onde mulheres<br/>
+        se tornam<br/>
+        <em>obras-primas.</em>
+      </h1>
+      <p data-reveal class="hero-desc">
+        Um atelier de beleza dedicado à arte de revelar a sua versão mais luminosa. Cada serviço, uma assinatura.
+      </p>
+      <div data-reveal class="hero-buttons">
+        <a href="https://wa.me/5542998144294" class="btn btn-primary" target="_blank" rel="noreferrer">Reserve sua experiência</a>
+        <a href="#filosofia" class="btn btn-secondary">conhecer o atelier</a>
+      </div>
+
+      <div data-reveal class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Anos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2.6k</div>
+          <div class="stat-label">Clientes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5★</div>
+          <div class="stat-label">Avaliação</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section id="filosofia" class="light">
+    <div class="section-container philosophy">
+      <div data-reveal class="section-tag">— Filosofia</div>
+      <h2 data-reveal>
+        A beleza, para nós, é o <em>cuidado</em><br/>
+        que se transforma em <em>presença</em>.
+      </h2>
+      <p data-reveal class="philosophy-text">
+        O Pina Beauty Concept é um atelier dedicado à arte de embelezar — não apenas pela técnica, mas pelo olhar atento, pelo tempo dedicado, pelo desejo genuíno de ver cada mulher sair daqui mais segura, mais sua, mais diva.
+      </p>
+    </div>
+  </section>
+
+  <!-- Atelier / Services -->
+  <section id="atelier" class="dark">
+    <div class="section-container">
+      <div data-reveal style="text-align: center; margin-bottom: 100px;">
+        <div class="section-tag">— Atelier</div>
+        <h2>
+          Serviços<br/><em>assinatura</em>
+        </h2>
+      </div>
+
+      <div class="services-grid">
+        <!-- Cortes -->
+        <div data-reveal class="service-card">
+          <div>
+            <div class="service-number">nº 01</div>
+            <div class="service-name">Cortes</div>
+            <div class="service-subtitle">Femininos</div>
+            <p class="service-desc">Cortes que dialogam com sua personalidade.</p>
+          </div>
+          <div class="service-cta">Ver detalhes →</div>
+        </div>
+
+        <!-- Maquiagem -->
+        <div data-reveal class="service-card">
+          <div>
+            <div class="service-number">nº 02</div>
+            <div class="service-name">Maquiagem</div>
+            <div class="service-subtitle">Couture</div>
+            <p class="service-desc">Make autoral para o seu momento mais importante.</p>
+          </div>
+          <div class="service-cta">Ver detalhes →</div>
+        </div>
+
+        <!-- Sobrancelhas -->
+        <div data-reveal class="service-card">
+          <div>
+            <div class="service-number">nº 03</div>
+            <div class="service-name">Sobrancelhas</div>
+            <div class="service-subtitle">Visagismo</div>
+            <p class="service-desc">Design que harmoniza o olhar.</p>
+          </div>
+          <div class="service-cta">Ver detalhes →</div>
+        </div>
+
+        <!-- Unhas -->
+        <div data-reveal class="service-card">
+          <div>
+            <div class="service-number">nº 04</div>
+            <div class="service-name">Unhas</div>
+            <div class="service-subtitle">Nail Art</div>
+            <p class="service-desc">Da clássica francesinha à arte autoral.</p>
+          </div>
+          <div class="service-cta">Ver detalhes →</div>
+        </div>
+
+        <!-- Cílios -->
+        <div data-reveal class="service-card">
+          <div>
+            <div class="service-number">nº 05</div>
+            <div class="service-name">Cílios</div>
+            <div class="service-subtitle">Volume Russo</div>
+            <p class="service-desc">Olhar marcante, sem peso.</p>
+          </div>
+          <div class="service-cta">Ver detalhes →</div>
+        </div>
+
+        <!-- Special Offer -->
+        <div data-reveal class="service-card service-special">
+          <div>
+            <div class="service-special-title">Algo<br/>mais especial?</div>
+            <p class="service-special-text">Day spa, dia da noiva, pacotes para eventos. Conte-nos sobre seu momento.</p>
+          </div>
+          <a href="https://wa.me/5542998144294" target="_blank" rel="noreferrer">Conversar →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="equipe" class="light">
+    <div class="section-container">
+      <div data-reveal class="team-header">
+        <div>
+          <div class="section-tag">— Equipe</div>
+          <h2>
+            Profissionais<br/>
+            <em>apaixonadas.</em>
+          </h2>
+        </div>
+        <p class="team-header-text">
+          Cada uma especialista em sua arte, todas movidas pelo mesmo propósito: revelar a beleza única que existe em você.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/hadassa.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 01</div>
+          </div>
+          <div class="team-name">Hadassa</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/Jessica.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 02</div>
+          </div>
+          <div class="team-name">Jéssica</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/Leandro.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 03</div>
+          </div>
+          <div class="team-name">Leandro</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/Monalisa.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 04</div>
+          </div>
+          <div class="team-name">Monalisa</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/Julya.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 05</div>
+          </div>
+          <div class="team-name">Julya</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+        <div data-reveal class="team-member">
+          <div class="team-photo" style="background-image: url('img/Daiane.jpg'); background-size: cover; background-position: center;">
+            <div class="team-photo-number">nº 06</div>
+          </div>
+          <div class="team-name">Daiane</div>
+          <div class="team-role">Especialista</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="galeria" class="dark">
+    <div class="section-container">
+      <div data-reveal style="text-align: center; margin-bottom: 80px;">
+        <div class="section-tag">— @pinabeautyconcept</div>
+        <h2>
+          Diário<br/><em>visual</em>
+        </h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div data-reveal class="gallery-item" data-tall><blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DV_OCKUDeW6/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DV_OCKUDeW6/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-right: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg);"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DV_OCKUDeW6/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by PINA BEAUTY CONCEPT - salao de beleza Ponta Grossa (@pinabeautyconcept)</a></p></div></blockquote><script async src="//www.instagram.com/embed.js"></script></div>
+        <div data-reveal class="gallery-item"><blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DVbMszLDVcd/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DVbMszLDVcd/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DVbMszLDVcd/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by PINA BEAUTY CONCEPT - salao de beleza Ponta Grossa (@pinabeautyconcept)</a></p></div></blockquote><script async src="//www.instagram.com/embed.js"></script></div>
+        <div data-reveal class="gallery-item" data-tall><blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DV_Qkbaiqth/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DV_Qkbaiqth/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DV_Qkbaiqth/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by PINA BEAUTY CONCEPT - salao de beleza Ponta Grossa (@pinabeautyconcept)</a></p></div></blockquote><script async src="//www.instagram.com/embed.js"></script></div>
+        <div data-reveal class="gallery-item" data-tall><blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DVjCJf6ja0M/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DVjCJf6ja0M/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Visualizza questo post su Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DVjCJf6ja0M/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Un post condiviso da PINA BEAUTY CONCEPT - salao de beleza Ponta Grossa (@pinabeautyconcept)</a></p></div></blockquote><script async src="//www.instagram.com/embed.js"></script></div>
+        <div data-reveal class="gallery-item" data-tall><div class="gallery-text">FEED · 05</div><div class="gallery-overlay">@pinabeautyconcept</div></div>
+        <div data-reveal class="gallery-item" data-tall><div class="gallery-text">FEED · 06</div><div class="gallery-overlay">@pinabeautyconcept</div></div>
+        <div data-reveal class="gallery-item" data-tall><div class="gallery-text">FEED · 07</div><div class="gallery-overlay">@pinabeautyconcept</div></div>
+        <div data-reveal class="gallery-item" data-tall><div class="gallery-text">FEED · 08</div><div class="gallery-overlay">@pinabeautyconcept</div></div>
+      </div>
+
+      <div class="gallery-button">
+        <a href="https://www.instagram.com/pinabeautyconcept/" target="_blank" rel="noreferrer" class="btn-instagram">Seguir no Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section id="visita" class="light">
+    <div class="section-container visit-container">
+      <div data-reveal>
+        <div class="section-tag">— Visite-nos</div>
+        <h2>
+          Reserve um<br/>
+          <em>momento</em><br/>
+          só seu.
+        </h2>
+
+        <div class="visit-info">
+          <div class="info-group">
+            <div class="info-label">Endereço</div>
+            <div class="info-content">
+              Rua Raul Pompeia, 31<br/>
+              <em>Jardim Carvalho</em> · Ponta Grossa, PR
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-group">
+              <div class="info-label">Telefone</div>
+              <div class="info-content info-phone">
+                (42) 3323-4294<br/>(42) 99814-4294
+              </div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Funcionamento</div>
+              <div class="info-content info-hours">
+                Ter — Sex · <em>10h–18h</em><br/>
+                Sábado · <em>9h–18h</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5542998144294" target="_blank" rel="noreferrer" class="btn-contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+
+      <div data-reveal class="visit-image">
+        <div class="visit-image-text">FACHADA · ATELIER</div>
+        <div class="visit-quote">"Um espaço pensado<br/>para o seu cuidado."</div>
+        <div class="corner-deco corner-deco-tl"></div>
+        <div class="corner-deco corner-deco-bl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 · Pina Beauty Concept</div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/pinabeautyconcept/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/pinabeautconcep/" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://wa.me/5542998144294" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+        <div>Ponta Grossa · PR</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5542998144294" target="_blank" rel="noreferrer" class="floating-whatsapp">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+    Reservar
+  </a>
+
+  <script>
+    // Scroll reveal animation
+    function setupRevealAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute('data-revealed', 'true');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        observer.observe(el);
+      });
+    }
+
+    // Navbar scroll effect
+    function setupNavbarScroll() {
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      setupRevealAnimations();
+      setupNavbarScroll();
+    });
+  </script>
+</body>
+</html>

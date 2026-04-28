@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pina Beauty Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Italiana&family=Cinzel:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #1a0f0a; color: #F4EDE4; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+
+  [data-reveal-b] { opacity: 0; transform: translateY(40px); transition: opacity 1300ms cubic-bezier(.2,.8,.2,1), transform 1300ms cubic-bezier(.2,.8,.2,1); }
+  [data-reveal-b][data-revealed-b="true"] { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #14090a; }
+  ::-webkit-scrollbar-thumb { background: rgba(212,165,116,0.4); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(212,165,116,0.7); }
+
+  /* Mobile tweaks */
+  @media (max-width: 900px) {
+    [data-pina-grid-2] { grid-template-columns: 1fr !important; gap: 48px !important; }
+    [data-pina-services-grid] { grid-template-columns: 1fr !important; }
+    [data-pina-team] { grid-template-columns: repeat(2, 1fr) !important; }
+    [data-pina-gallery] { grid-template-columns: repeat(2, 1fr) !important; }
+    [data-pina-nav-links] { display: none !important; }
+    [data-pina-nav] { padding: 16px 24px !important; }
+    [data-pina-section] { padding: 96px 24px !important; }
+    [data-pina-hero-stats] { gap: 32px !important; }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="site-b.jsx"></script>
+
+<script type="text/babel" data-presets="env,react">
+const { useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "displayFont": "Cinzel",
+  "bodyFont": "DM Sans",
+  "accentHue": 35
+}/*EDITMODE-END*/;
+
+const FONT_OPTIONS = [
+  { label: "Cormorant Garamond", value: "Cormorant Garamond" },
+  { label: "Playfair Display", value: "Playfair Display" },
+  { label: "Italiana", value: "Italiana" },
+  { label: "Cinzel", value: "Cinzel" },
+];
+const BODY_FONT_OPTIONS = [
+  { label: "DM Sans", value: "DM Sans" },
+  { label: "Jost", value: "Jost" },
+  { label: "Inter", value: "Inter" },
+];
+
+function App() {
+  const { useTweaks, TweaksPanel, TweakSection, TweakSelect, TweakSlider } = window;
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    let s = document.getElementById("font-overrides");
+    if (!s) { s = document.createElement("style"); s.id = "font-overrides"; document.head.appendChild(s); }
+    s.textContent = `
+      [data-pina-site] h1, [data-pina-site] h2, [data-pina-site] .pina-display,
+      [data-pina-site] [style*="Cormorant"] { font-family: '${tweaks.displayFont}', serif !important; }
+      [data-pina-site], [data-pina-site] p, [data-pina-site] li,
+      [data-pina-site] [style*="Jost"] { font-family: '${tweaks.bodyFont}', sans-serif; }
+      [data-pina-site] { --pina-accent-hue: ${tweaks.accentHue}; }
+    `;
+  }, [tweaks.displayFont, tweaks.bodyFont, tweaks.accentHue]);
+
+  if (!window.SiteB) return <div style={{ padding: 40 }}>Carregando…</div>;
+
+  return (
+    <>
+      <div data-pina-site>
+        <window.SiteB />
+      </div>
+      {TweaksPanel && (
+        <TweaksPanel title="Tweaks">
+          <TweakSection title="Tipografia">
+            <TweakSelect label="Fonte de display" value={tweaks.displayFont} options={FONT_OPTIONS} onChange={(v) => setTweak("displayFont", v)} />
+            <TweakSelect label="Fonte de texto" value={tweaks.bodyFont} options={BODY_FONT_OPTIONS} onChange={(v) => setTweak("bodyFont", v)} />
+          </TweakSection>
+        </TweaksPanel>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
